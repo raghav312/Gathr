@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.CallFragment"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="2dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="15dp"
+        android:background="@color/ColorGray">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="5dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="Enter GathrID"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="35dp"
+                    app:boxBackgroundColor="@color/ColorWhite">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRoomID"
+                        android:layout_width="256dp"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:fontFamily="@font/manrope_regular"
+                        android:hint="UUID or Any"
+                        android:padding="10dp"
+                        android:textColor="@color/ColorDarkBlack" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+           
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btnJoinCall"
+                    android:layout_width="140dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="22dp"
+                    android:background="@color/ColorLightBlack"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="Join"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btnShareCall"
+                    android:layout_width="140dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="13dp"
+                    android:background="@color/ColorLightBlack"
+                    android:fontFamily="@font/manrope_bold"
+                    android:text="Share"
+                    android:textColor="@color/ColorWhite" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvIDGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:padding="10dp"
+                    android:text="Generate GathrID"
+                    android:fontFamily="@font/manrope_regular"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/llGenerator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvGeneratedID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="40dp"
+                        android:fontFamily="@font/manrope_bold"
+                        android:text=""
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20dp" />
+
+                    <ImageButton
+                        android:id="@+id/btnCopyID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/ColorWhite"
+                        android:src="@drawable/ic_baseline_content_copy_24" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+
+                android:layout_marginTop="20dp"
+                android:src="@drawable/undraw_conference_call_b0w6"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

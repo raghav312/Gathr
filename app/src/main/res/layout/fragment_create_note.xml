@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".fragments.CreateNoteFragment">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimaryDark">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginRight="150dp"
+                android:hapticFeedbackEnabled="true"
+                />
+
+
+            <ImageButton
+                android:id="@+id/btnDone"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="140dp"
+                android:src="@drawable/ic_round_done_outline_24"
+                android:background="@color/colorPrimaryDark"
+                android:outlineAmbientShadowColor="@color/ColorGray"
+                android:hapticFeedbackEnabled="true"
+                />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:textColorHint="@color/white"
+            android:textSize="25sp"
+            android:padding="5dp"
+            android:background="@null"
+            android:fontFamily="@font/manrope_bold"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:hapticFeedbackEnabled="true"
+            />
+
+
+
+        <EditText
+            android:id="@+id/etContent"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:maxLength="200"
+            android:fontFamily="@font/manrope_regular"
+            android:inputType="textMultiLine"
+            android:hint="**character limit 200**"
+            android:textColorHint="@color/ColorGray"
+            android:padding="10dp"
+            android:layout_margin="8dp"
+            />
+        
+    </LinearLayout>
+
+</FrameLayout>

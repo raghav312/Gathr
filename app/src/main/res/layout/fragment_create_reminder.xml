@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".fragments.CreateReminderFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimaryDark">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginRight="150dp"
+                />
+
+
+            <ImageButton
+                android:id="@+id/btnDone"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="140dp"
+                android:src="@drawable/ic_round_done_outline_24"
+                android:background="@color/colorPrimaryDark"
+                android:outlineAmbientShadowColor="@color/ColorGray"
+                />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:textColorHint="@color/white"
+            android:textSize="21sp"
+            android:padding="5dp"
+            android:background="@null"
+            android:fontFamily="@font/manrope_bold"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            android:hapticFeedbackEnabled="true"
+            />
+
+        <LinearLayout
+            android:padding="5dp"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llDatePicker"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnCalendar"
+                    android:padding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24"/>
+
+                <EditText
+                    android:id="@+id/etDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/manrope_regular"
+                    android:textColor="@color/ColorWhite"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llTimePicker"
+                android:layout_marginTop="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:padding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_timer_24"/>
+
+                <EditText
+                    android:id="@+id/etTime"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="time"
+                    android:fontFamily="@font/manrope_regular"
+                    android:textColor="@color/ColorWhite"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
