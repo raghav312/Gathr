@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     tools:context=".fragments.ReminderFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimaryDark">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvReminders"
@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             tools:listitem="@layout/item_reminder"
+            android:background="@color/colorPrimaryDark"
             />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

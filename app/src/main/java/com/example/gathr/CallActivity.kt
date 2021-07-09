@@ -1,15 +1,25 @@
 package com.example.gathr
 
 
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.gathr.databinding.ActivityCallBinding
-import org.jitsi.meet.sdk.JitsiMeetActivity
-import org.jitsi.meet.sdk.JitsiMeetConferenceOptions
+import org.jitsi.meet.sdk.*
+import timber.log.Timber
+import java.lang.Exception
 import java.net.MalformedURLException
 import java.net.URL
 
 class CallActivity : AppCompatActivity() {
+
+
 
     lateinit var binding: ActivityCallBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +27,8 @@ class CallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val roomID = intent.extras?.get("id").toString()
+
+
         try {
             // object creation of JitsiMeetConferenceOptions
             // class by the name of options
@@ -28,15 +39,20 @@ class CallActivity : AppCompatActivity() {
         } catch (e: MalformedURLException) {
             e.printStackTrace()
         }
-        calling(roomID)
+
+        try {
+            val roomID = intent.extras?.get("id").toString()
+            calling(roomID)
+        }catch (e:Exception){
+            print(e.stackTrace)
+        }
     }
 
     private fun calling(text:String) {
-
         // if user has typed some text in
         // EditText then only room will create
         if (text.length >=6) {
-            // creating a room using  JitsiMeetConferenceOptions class
+            // creating a room using JitsiMeetConferenceOptions class
             // here .setRoom() method will set the text in room name
             // here launch method with launch a new room to user where
             // they can invite others too.

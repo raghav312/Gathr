@@ -1,10 +1,14 @@
 package com.example.gathr.fragments
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,14 +18,20 @@ import com.example.gathr.adapters.IRemRVadapter
 import com.example.gathr.adapters.RemindersRVadapter
 import com.example.gathr.databinding.FragmentReminderBinding
 import com.example.gathr.entities.Reminder
+import com.example.gathr.utils.NotificationHelper
 
 class ReminderFragment : Fragment(),View.OnClickListener,IRemRVadapter {
+
     private lateinit var binding: FragmentReminderBinding
     lateinit var viewModel: ReminderViewModel
+    private lateinit var alarmManager: AlarmManager
+    lateinit var pendingIntent: PendingIntent
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentReminderBinding.inflate(layoutInflater)
         val view: View = binding.root
 
@@ -38,6 +48,14 @@ class ReminderFragment : Fragment(),View.OnClickListener,IRemRVadapter {
 
         binding.fabAddReminder.setOnClickListener(this)
         return view
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        NotificationHelper.createNotificationChannel(requireContext(),
+            NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
+            getString(R.string.app_name), "App notification channel.")
     }
 
     override fun onClick(v: View?) {
@@ -56,8 +74,8 @@ class ReminderFragment : Fragment(),View.OnClickListener,IRemRVadapter {
 
     override fun onItemClicked(reminder: Reminder) {
         viewModel.deleteReminder(reminder)
+        //canceReminder(reminder)
     }
-
 
     override fun onItemChecked(reminder: Reminder) {
         reminder.active = !reminder.active
