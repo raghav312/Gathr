@@ -65,7 +65,6 @@ class BulletinFragment : Fragment(), INotesRVadapter,View.OnClickListener{
             fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
         }
         fragmentTransition.replace(R.id.bulletin_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
-
     }
 
 }

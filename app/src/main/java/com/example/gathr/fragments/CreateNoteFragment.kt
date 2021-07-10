@@ -45,8 +45,8 @@ class CreateNoteFragment : Fragment() {
             Snackbar.make(binding.root, "Please Enter Title", Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }else{
             val note: Note = Note(
-                binding.etTitle.text.toString(),
-                binding.etContent.text.toString()
+                binding.etContent.text.toString(),
+                binding.etTitle.text.toString()
             )
             viewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
             viewModel.insertNote(note)

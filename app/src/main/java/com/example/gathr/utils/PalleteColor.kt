@@ -11,7 +11,6 @@ class palleteColor {
             colorList.add(R.color.ColorGreenNote)
             colorList.add(R.color.ColorOrangeNote)
             colorList.add(R.color.ColorPurpleNote)
-            colorList.add(R.color.ColorYellowNote)
             colorList.add(R.color.ColorBlueNote)
              colorList.add(R.color.ColorBlue)
             return colorList

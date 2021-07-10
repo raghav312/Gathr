@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".access.AlreadyUserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gathr"
+                android:textSize="24sp"
+                android:fontFamily="@font/manrope_bold"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/manrope_regular"
+                android:id="@+id/etUserEmail"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:background="@drawable/rounded_et"
+                android:textColorHint="@color/ColorText"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:layout_marginVertical="8dp"
+                android:inputType="textPassword"
+                android:id="@+id/etUserPassword"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Password"
+                android:textColorHint="@color/ColorText"
+                android:padding="8dp"
+                android:background="@drawable/rounded_et"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/manrope_regular"
+                android:textSize="18sp"/>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/btnLogin"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:padding="8dp"
+                android:background="@drawable/rounded_et"
+                android:fontFamily="@font/manrope_bold"
+                android:text="Login"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_marginTop="45dp"
+                android:id="@+id/tvBTR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back to register"
+                android:textColor="@color/white"
+                android:fontFamily="@font/manrope_regular"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

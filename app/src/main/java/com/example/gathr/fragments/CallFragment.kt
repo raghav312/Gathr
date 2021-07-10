@@ -28,7 +28,6 @@ class CallFragment : Fragment(), View.OnClickListener {
         binding = FragmentCallBinding.inflate(layoutInflater)
         val view:View? = binding.root
         // Inflate the layout for this fragment
-
         binding.btnJoinCall.setOnClickListener(this)
         binding.btnCopyID.setOnClickListener(this)
         binding.tvIDGen.setOnClickListener(this)
@@ -41,20 +40,21 @@ class CallFragment : Fragment(), View.OnClickListener {
         when(v?.id){
             R.id.btnShareCall->{
                 //share call
+                roomID = binding.etRoomID.text.toString()
                 if(checkRoomId()){
                     shareRoomID(ADDER+roomID)
                 }else{
-                    Toast.makeText(requireContext(),"roomID isn't upto standard",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Please Enter a valid gathrID",Toast.LENGTH_SHORT).show()
                 }
-
             }
             R.id.btnJoinCall ->{ // make a connect to call request
+                roomID = binding.etRoomID.text.toString()
                 if(checkRoomId()){
                     val intent = Intent(requireContext(),CallActivity::class.java)
                     intent.putExtra("id",roomID)
                     startActivity(intent)
                 }else{
-                    Toast.makeText(requireContext(),"roomID isn't upto standard",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Please Enter a valid gathrID",Toast.LENGTH_SHORT).show()
                 }
 
             }

@@ -2,10 +2,12 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 
 android {
+
     compileSdkVersion 30
 
     defaultConfig {
@@ -28,12 +30,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding true
     }
@@ -49,6 +54,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -80,7 +87,12 @@ dependencies {
     androidTestImplementation ("androidx.test.espresso:espresso-core:$rootProject.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
+    implementation platform('com.google.firebase:firebase-bom:28.2.0')
     implementation('org.jitsi.react:jitsi-meet-sdk:3.3.0') { transitive = true }
+
+    implementation "com.github.lisawray.groupie:groupie:2.9.0"
+    implementation "com.github.lisawray.groupie:groupie-viewbinding:2.9.0"
+
 }

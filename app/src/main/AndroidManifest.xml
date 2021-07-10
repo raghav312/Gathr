@@ -9,9 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gathr.NoActionBar">
-        <activity android:name=".CallActivity"></activity>
+        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".NewMessageActivity" />
+        <activity android:name=".access.AlreadyUserActivity" />
         <activity
             android:name=".MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".CallActivity" />
+        <activity
+            android:name=".access.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".utils.AlarmReceiver"/>
 
+        <receiver android:name=".utils.AlarmReceiver" />
     </application>
 
 </manifest>

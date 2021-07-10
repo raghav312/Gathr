@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_gravity="right"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:backgroundTint="@color/ColorGray"
+        android:background="@drawable/rounded_et">
+
+        <TextView
+            android:id="@+id/tvToItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/manrope_bold"
+            android:textColor="@color/ColorDarkBlack"
+            android:text="You"/>
+        <TextView
+            android:id="@+id/tvToRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_regular"
+            android:text="This is my message that will wrap into multiple lines and keep on going"
+            android:maxWidth="300dp"
+            android:textColor="@color/ColorLightBlack"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

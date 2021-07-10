@@ -19,8 +19,6 @@ import java.net.URL
 
 class CallActivity : AppCompatActivity() {
 
-
-
     lateinit var binding: ActivityCallBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 

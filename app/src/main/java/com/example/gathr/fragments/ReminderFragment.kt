@@ -2,7 +2,10 @@ package com.example.gathr.fragments
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +21,7 @@ import com.example.gathr.adapters.IRemRVadapter
 import com.example.gathr.adapters.RemindersRVadapter
 import com.example.gathr.databinding.FragmentReminderBinding
 import com.example.gathr.entities.Reminder
+import com.example.gathr.utils.AlarmReceiver
 import com.example.gathr.utils.NotificationHelper
 
 class ReminderFragment : Fragment(),View.OnClickListener,IRemRVadapter {
@@ -74,7 +78,16 @@ class ReminderFragment : Fragment(),View.OnClickListener,IRemRVadapter {
 
     override fun onItemClicked(reminder: Reminder) {
         viewModel.deleteReminder(reminder)
-        //canceReminder(reminder)
+        cancelReminder(reminder)
+    }
+
+    fun cancelReminder(reminder: Reminder){
+        alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(requireContext(), AlarmReceiver::class.java)
+        intent.putExtra("title",reminder.reminderTitle)
+        pendingIntent = PendingIntent.getBroadcast(requireContext(),0,intent,0)
+        alarmManager.cancel(pendingIntent)
+        Toast.makeText(requireContext(),"Reminder poped!",Toast.LENGTH_SHORT).show()
     }
 
     override fun onItemChecked(reminder: Reminder) {

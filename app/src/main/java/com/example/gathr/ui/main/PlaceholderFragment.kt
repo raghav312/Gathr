@@ -38,8 +38,6 @@ class PlaceholderFragment : Fragment() {
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root = binding.root
-
-
         return root
     }
 

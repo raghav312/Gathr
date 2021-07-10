@@ -1,5 +1,4 @@
 package com.example.gathr.fragments
-
 import android.app.AlarmManager
 import android.app.DatePickerDialog
 import android.app.PendingIntent
@@ -26,7 +25,6 @@ import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class CreateReminderFragment : Fragment() {
     lateinit var binding: FragmentCreateReminderBinding
@@ -81,17 +79,19 @@ class CreateReminderFragment : Fragment() {
                 .setAction("Action", null).show()
 
         } else {
-            val reminder: Reminder = Reminder(
+            val reminder = Reminder(
                 binding.etTitle.text.toString(),
                 binding.etDate.text.toString(),
                 binding.etTime.text.toString(),
                 true
             )
+
             viewModel = ViewModelProvider(this).get(ReminderViewModel::class.java)
             viewModel.insertReminder(reminder)
             setAlarm(reminder)
             Log.i("dataisnew","${reminder} sent")
             requireActivity().supportFragmentManager.popBackStack()
+
         }
     }
 
