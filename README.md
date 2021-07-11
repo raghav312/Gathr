@@ -32,13 +32,16 @@
     <p>Whats the use of bulletin if you forget to open the app on time?
         This is where reminders come handy to help you be on time.
         They are easy to set and just a touch away to delete thus helping you set personal alarm to avoid those late night assignment submission.</p> 
+    <h4>UI/UX</h4>
    <p>Gathr have intuitive ui/ux to make the app not just be user-friendly but also fast to browse.</p>
+    <br>
    <h2>Agile Methodology</h2>
         As part of Microsoft Engage '21 program , I used Agile Methodology to build this app
     <ul><li>   Tech Stack : Android - Kotlin</li>
       <li> IDE : Android Studio</li>
       <li> Version Control: GitHub</li>
        <li>Libraries : Groupie(For setting up adapters)</li>
+        <br>
    <h4>Sprint 1: Design Phase</h4>
         <table style="border-style: solid;">
             <tr>
@@ -78,7 +81,7 @@
             </tr>
         </table>
         <p>Issues faced: Getting familiar with fragments </p>
-        
+        <br>
    <h4>Sprint 2: Built Phase</h4>
         <table>
             <tr>
@@ -119,6 +122,7 @@
           <li>Recording feature not working</li>
           <li>Not able to setup to private server</li>
         </ul>
+        <br>
    <h4>Sprint 3: Adapt phase</h4>
        Although there was a chatting feature embedded on the jitsi meet sdk but it didn't fulfill the requirement. So had make a chat app from scratch. 
         <table>
