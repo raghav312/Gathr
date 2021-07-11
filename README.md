@@ -45,7 +45,7 @@
    <h4>Sprint 1: Design Phase</h4>
         <table style="border-style: solid;">
             <tr>
-                <th>Priority</th>
+                <th>priority</th>
                 <th>Task</th>
             </tr>
             <tr>
@@ -159,6 +159,24 @@
           <li>User not able to register in the app</li>
         </ul>
         <br>
+        <h4>Sprint 4: Submission Phase</h4>
+            <table>
+                <tr>
+                    <th>priority</th>
+                    <th>Task</th>
+                </tr>
+                <tr>
+                    <td>p0 ✅</td>
+                    <td> <ul>
+                            <li>Make a demo of the app</li>
+                            <li>Make GitHub readme file</li>
+                            <li>Generate APK and deploy(Google Play Store or Drive link)</li>
+                        </ul> 
+                    </td>
+                    <td><a href="https://youtu.be/NCxPr2JpD3s">Gathr-Demo-RaghavSharma</a></td>
+                </tr>
+            </table>
+            <br>
    <h3>Concluding</h3>
         It was a journey that taught me alot about corporate and how they do make world class softwares.
         <br>
