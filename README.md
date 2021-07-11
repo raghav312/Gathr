@@ -25,7 +25,7 @@
             <li>Enabling audio mode only(help with low bandwidth connections)</li>
         </ul>
     <h4>In-app One-to-one Chat</h4>
-    <p> Apart from these <i>Gathr</i> also provides in-app one-to-one chat option incase user wants to chat before and after the meeting.(Can also be used in PIP mode during the meeting)</p>
+    <p> Apart from these <i>Gathr</i> also provides in-app one-to-one chat option when user wants to chat before and after the meeting.(Can also be used during the meeting by converting ongoing meeting to PIP mode)</p>
    <h4>Bulletin</h4>
     <p>One feature I personally think should be <i>Microsoft Teams</i> is bulletins so i included that in Gathr user can add and delete tasks to bulletin which helps in remain productive and informed. </p>
   <h4>Reminders</h4>
