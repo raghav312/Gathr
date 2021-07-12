@@ -178,7 +178,7 @@
                         </ul> 
                     </td>
                     <td><a href="https://youtu.be/NCxPr2JpD3s">Gathr-Demo-RaghavSharma</a></td>
-                    <td><a href="https://drive.google.com/file/d/1JKV5Dw8VXeazU8B2JVmp-fSSCsv6u5hq/view?usp=sharing">Gathr-release-apk</a></td>
+                    <td><a href="https://drive.google.com/drive/folders/1LCnU5mBkzr8KFB8P8d9xOQtcSnSTBfOG?usp=sharing">Gathr-release-apk</a></td>
                 </tr>
             </table>
             <br>
