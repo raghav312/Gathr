@@ -103,12 +103,16 @@
                         <li>Adapters</li>
                     </ul>
                 </td>
+                <td>Clean Architecture</td>
             </tr>
             <tr>
                 <td>p2 ❌</td>
                 <td>Recording feature using Jibri</td>
-                <td> Setup a server on a vm and also host a domain (Azure cloud, Digital Ocean etc).
-                    Setup xmpp ,configure jitsi and jibri to improve performance and record and store user calls securely.
+                <td>
+                    Rent a vm and configure it appropriately inorder to use it as a jitsi server.
+                </td>
+                <td>
+                    Rented server can be used to record and show videos to user. 
                 </td>
             </tr>
         </table>
@@ -174,6 +178,7 @@
                         </ul> 
                     </td>
                     <td><a href="https://youtu.be/NCxPr2JpD3s">Gathr-Demo-RaghavSharma</a></td>
+                    <td><a href="https://drive.google.com/file/d/1JKV5Dw8VXeazU8B2JVmp-fSSCsv6u5hq/view?usp=sharing">Gathr-release-apk</a></td>
                 </tr>
             </table>
             <br>
