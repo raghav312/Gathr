@@ -26,13 +26,19 @@ class NewMessageActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Select User"
+
+        //fetch all the users
         fetchUsers()
     }
 
+    //finish the activity when user press back button
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
     }
+
+    //fetch users from realtime db and use that to make an adapter and put it into
+    //the view
 
     private fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
@@ -43,29 +49,32 @@ class NewMessageActivity : AppCompatActivity() {
                 p0.children.forEach {
                     Log.d("NewMessage", it.toString())
                     val user = it.getValue(User::class.java)
+                    //dont get the data of user itself
                     if (user != null && user.uid!=FirebaseAuth.getInstance().currentUser?.uid ) {
                         adapter.add(UserItem(user) )
                     }
                 }
 
+                //go to compose a new message when clicked
                 adapter.setOnItemClickListener { item, view ->
                     val userItem = item as UserItem
                     val intent = Intent(view.context, ChatActivity::class.java)
                     intent.putExtra(USER_KEY, userItem.user)
-                    Log.d("NewMessage", "${userItem.user.username} is sent to ChatAct")
                     startActivity(intent)
                     finish()
                 }
 
                 binding.rvComposeChat.adapter = adapter
             }
+
             override fun onCancelled(p0: DatabaseError) {
-                Log.d("NewMessage", "Somethings wrong")
                 finish()
             }
         })
     }
 
+
+    //static variables
     companion object{
         const val USER_KEY = "USER_KEY"
     }

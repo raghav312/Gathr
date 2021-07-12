@@ -29,8 +29,11 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentChatBinding.inflate(layoutInflater)
+
+        //set up adapter
         binding.rvLatestMessages.adapter = adapter
-        //binding.rvLatestMessages.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+
+        //adapter on click action
         adapter.setOnItemClickListener { item, view ->
             Log.d(TAG,"123")
             val intent = Intent(requireContext(), ChatActivity::class.java)
@@ -38,9 +41,17 @@ class ChatFragment : Fragment() {
             intent.putExtra(NewMessageActivity.USER_KEY, row.chatPartnerUser)
             startActivity(intent)
         }
+
+        //listen for messages for user
         listenForLatestMessages()
+
+        //listen for messages for user
         fetchCurrentUser()
+
+
         signInVerified()
+
+        //create a new message
         binding.fabCreateNewMessage.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 val intent = Intent(requireActivity(),NewMessageActivity::class.java)
@@ -50,6 +61,7 @@ class ChatFragment : Fragment() {
         return binding.root
     }
 
+    //refresh recycler view and observe new messages
     private fun refreshRecyclerViewMessages() {
         adapter.clear()
         latestMessagesMap.values.forEach {
@@ -57,6 +69,8 @@ class ChatFragment : Fragment() {
         }
     }
 
+
+    //get latest messages and show it in the adapter
     private fun listenForLatestMessages() {
         val fromId = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId")
@@ -85,6 +99,9 @@ class ChatFragment : Fragment() {
         })
     }
 
+
+
+    //get current user details
     private fun fetchCurrentUser() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
@@ -100,15 +117,19 @@ class ChatFragment : Fragment() {
         })
     }
 
+
+    //verify user if user signed or not
     private fun signInVerified(){
         val uid = FirebaseAuth.getInstance().uid
         if(uid == null){
+            //if not signed in user will be redirected to login activity in access package
             val intent = Intent(requireContext(), LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
     }
 
+    //companion object to be used across package
     companion object {
         var currentUser: User? = null
         val TAG = "LatestMessages"

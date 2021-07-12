@@ -6,6 +6,8 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
+//Pre coded by android studio
+//example of livedata
 class PageViewModel : ViewModel() {
 
     private val _index = MutableLiveData<Int>()

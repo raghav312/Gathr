@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.gathr.MainActivity
@@ -18,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
+//Registering a new user
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
@@ -33,6 +36,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
+    //Create user with provide email and id and password
+    //name also stored in db to show in chat recyclerview
     private fun performRegister() {
 
         val email = binding.etEmail.text.toString()
@@ -42,44 +48,53 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        Log.d(TAG, "Attempting to create user with email: $email")
+       // Log.d(TAG, "Attempting to create user with email: $email")
 
-
+            binding.tvWaitDisplay.visibility = View.VISIBLE
             // Firebase Authentication to create a user with email and password
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener {
                     try {
                         if (!it.isSuccessful) return@addOnCompleteListener
                     }catch (e:FirebaseAuthUserCollisionException){
+                        //all exception which can occur
                         Toast.makeText(this, "User already exist!", Toast.LENGTH_SHORT).show()
+                        binding.tvWaitDisplay.visibility = View.GONE
                     }catch(e:FirebaseAuthInvalidCredentialsException){
                         Toast.makeText(this, "Email malformed", Toast.LENGTH_SHORT).show()
+                        binding.tvWaitDisplay.visibility = View.GONE
                     }catch (e:FirebaseAuthWeakPasswordException){
                         Toast.makeText(this, "Weak password exception", Toast.LENGTH_SHORT).show()
+                        binding.tvWaitDisplay.visibility = View.GONE
                     }
                     // else if successful
+                    //coroutine to do this task on IO thread
                     lifecycleScope.launch(Dispatchers.IO) { saveUserToFirebaseDatabase() }
-                    Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
+                   // Log.d(TAG, "Successfully created user with uid: ${it.result?.user?.uid}")
 
                 }
                 .addOnFailureListener {
-                    Log.d(TAG, "Failed to create user: ${it.message}")
+                    //when user does not take internet connectivity
                     Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT)
                         .show()
+
+                    binding.tvWaitDisplay.visibility = View.GONE
                 }
 
 
     }
 
+    //Save user to database
+    //Logs are self explanatory
     private fun saveUserToFirebaseDatabase() {
+
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-
         val user = User(uid, binding.etName.text.toString())
 
         ref.setValue(user)
             .addOnSuccessListener {
-                Log.d(TAG, "Finally we saved the user to Firebase Database")
+                //Log.d(TAG, "Finally we saved the user to Firebase Database")
 
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -87,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
             .addOnFailureListener {
-                Log.d(TAG, "Failed to set value to database: ${it.message}")
+               // Log.d(TAG, "Failed to set value to database: ${it.message}")
             }
     }
 

@@ -7,10 +7,11 @@ import androidx.room.RoomDatabase
 import com.example.gathr.daos.ReminderDao
 import com.example.gathr.entities.Reminder
 
+//database is wrapper on dao + entities
+
 //database collection
 @Database(entities = arrayOf(Reminder::class) , version = 1 , exportSchema = false)
 abstract class ReminderDatabase:RoomDatabase() {
-
     abstract fun getReminderDao(): ReminderDao
 
     companion object{

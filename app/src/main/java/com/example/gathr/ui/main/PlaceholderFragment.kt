@@ -14,6 +14,8 @@ import com.example.gathr.databinding.FragmentMainBinding
 /**
  * A placeholder fragment containing a simple view.
  */
+
+//a Placeholder fragment
 class PlaceholderFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel

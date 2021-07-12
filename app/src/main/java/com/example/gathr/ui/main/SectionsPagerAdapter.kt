@@ -10,6 +10,7 @@ import com.example.gathr.R
 import com.example.gathr.fragments.ChatFragment
 import com.example.gathr.fragments.ReminderFragment
 
+//names of the tab layout
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
     R.string.tab_text_2,
@@ -17,6 +18,7 @@ private val TAB_TITLES = arrayOf(
     R.string.tab_text_4
 )
 
+//switched between the sections on swipe or click on tabs
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 

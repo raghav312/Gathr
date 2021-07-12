@@ -23,10 +23,13 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
     val allNotes:LiveData<List<Note>>
 
     init{
+        //initialize these on every instance fetch call
         val dao = NotesDatabase.getDatabase(application).getNotesDao()
         repo = NotesRepository(dao)
         allNotes = repo.allNotes
     }
+
+    //Runs on IO thread , when called by usig Co-routines
     fun deleteNote(note: Note) = viewModelScope.launch(Dispatchers.IO) {
         repo.delete(note)
     }

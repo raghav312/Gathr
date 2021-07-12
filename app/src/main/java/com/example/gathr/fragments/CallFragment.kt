@@ -11,16 +11,19 @@ import com.example.gathr.CallActivity
 import com.example.gathr.R
 import com.example.gathr.databinding.FragmentCallBinding
 
-class CallFragment : Fragment(), View.OnClickListener {
+
+//Call fragment
+class CallFragment : Fragment(), View. OnClickListener {
 
     private lateinit var binding: FragmentCallBinding
     private lateinit var roomID: String
 
     companion object{
-        const val ADDER:String = "Come on lets Gathr! Join the call with this GathrID "
+        const val ADDER:String = " Come on lets Gathr! Join the call with this GathrID "
         const val GATHR_ID_LEN = 8
     }
 
+    //triggered on fragment creation
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

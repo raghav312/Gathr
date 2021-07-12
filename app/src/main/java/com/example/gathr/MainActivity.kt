@@ -24,12 +24,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+    //pre coded from android studio when making an tabbed layout activity
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //making a section pager adapter
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = binding.viewPager
+
+        //inserting an adapter in the viewPager
         viewPager.adapter = sectionsPagerAdapter
+
+        //setting up TabLayout
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
     }

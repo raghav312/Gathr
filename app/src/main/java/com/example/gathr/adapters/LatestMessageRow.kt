@@ -13,12 +13,17 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.xwray.groupie.viewbinding.BindableItem
 
+
+//Adapter to show latest message to chat fragment screen
 class LatestMessageRow(val chatMessage: ChatMessage):BindableItem<LatestMessagesRowBinding>() {
+    //name if the user who this adapter represents
     var chatPartnerUser: User? = null
 
     override fun bind(viewBinding: LatestMessagesRowBinding, position: Int) {
 
         viewBinding.tvSenderLastMessage.text = chatMessage.text
+
+        // check who sent the last message
         val chatPartnerId:String
         if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
             chatPartnerId = chatMessage.toId
@@ -26,6 +31,7 @@ class LatestMessageRow(val chatMessage: ChatMessage):BindableItem<LatestMessages
             chatPartnerId = chatMessage.fromId
         }
 
+        //update the latest messsage on the adapter
         val ref  = FirebaseDatabase.getInstance().getReference("/users/$chatPartnerId")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -38,10 +44,12 @@ class LatestMessageRow(val chatMessage: ChatMessage):BindableItem<LatestMessages
     }
 
     override fun getLayout(): Int {
+        //adapter layout
         return R.layout.latest_messages_row
     }
 
     override fun initializeViewBinding(view: View): LatestMessagesRowBinding {
+        //providing view binding instead of a traditional viewHolder
         return LatestMessagesRowBinding.bind(view)
     }
 }

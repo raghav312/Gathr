@@ -8,8 +8,15 @@ import com.example.gathr.R
 import com.example.gathr.databinding.ItemReminderBinding
 import com.example.gathr.entities.Reminder
 
+
+// A traditional recyclerview for displaying the notes stored in roomDB
+//getting context and listener from activity
 class RemindersRVadapter(val context: Context, val listener:IRemRVadapter):RecyclerView.Adapter<RemindersRVadapter.ReminderViewHolder>() {
+
+    // array to get all the reminders
     private var allReminders = ArrayList<Reminder>()
+
+    //ViewHolder class using view binding to access ids on card
     inner class ReminderViewHolder(binding: ItemReminderBinding) : RecyclerView.ViewHolder(binding.root){
         val btnDelete = binding.btnDeleteReminder
         val title = binding.tvRemTitle
@@ -18,6 +25,7 @@ class RemindersRVadapter(val context: Context, val listener:IRemRVadapter):Recyc
         val toggler = binding.ibToggleStatus
     }
 
+    //members function
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReminderViewHolder {
         var binding: ItemReminderBinding = ItemReminderBinding.inflate(LayoutInflater.from(context),parent,false)
         val viewHolder = ReminderViewHolder(binding)
@@ -30,6 +38,7 @@ class RemindersRVadapter(val context: Context, val listener:IRemRVadapter):Recyc
         return viewHolder
     }
 
+    //members function
     override fun onBindViewHolder(holder: ReminderViewHolder, position: Int) {
 
         var currRem = allReminders[position]
@@ -44,9 +53,12 @@ class RemindersRVadapter(val context: Context, val listener:IRemRVadapter):Recyc
         }
     }
 
+    //members function
     override fun getItemCount(): Int {
        return allReminders.size
     }
+
+    //update the list on deletion or addition
 
     fun updateList(List:ArrayList<Reminder>){
         allReminders.clear()
@@ -55,6 +67,7 @@ class RemindersRVadapter(val context: Context, val listener:IRemRVadapter):Recyc
     }
 }
 
+//Making an interface listening to clicks on adapters icons
 interface IRemRVadapter{
     fun onItemClicked(reminder: Reminder)
     fun onItemChecked(reminder: Reminder)

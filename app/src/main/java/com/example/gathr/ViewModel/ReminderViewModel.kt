@@ -30,6 +30,7 @@ class ReminderViewModel(application: Application):AndroidViewModel(application) 
         allReminders = repo.allReminders
     }
 
+    //runs these function on IO thread using Coroutines
     fun deleteReminder(reminder: Reminder) = viewModelScope.launch(Dispatchers.IO) {
         repo.deleteReminder(reminder)
     }

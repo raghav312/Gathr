@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 
+//Activity here user can chat with other Gathr users
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityChatBinding
@@ -33,7 +34,6 @@ class ChatActivity : AppCompatActivity() {
 
         listenForMessages()
         binding.btnSendText.setOnClickListener {
-            Log.d(TAG, "Attempt to send message....")
             performSendMessage()
         }
     }
@@ -80,36 +80,54 @@ class ChatActivity : AppCompatActivity() {
             }
 
         })
-
     }
 
 
+    //perform send messages
     private fun performSendMessage() {
         // how do we actually send a message to firebase...
         val text = binding.etChatLog.text.toString()
 
+        //get firebase instance ,user,chatting partner.
         val fromId = FirebaseAuth.getInstance().uid
         val user:User? = intent.extras?.getSerializable(NewMessageActivity.USER_KEY)  as User
         val toId = user?.uid
 
         if (fromId == null) return
 
+        //search the directory user-messages or make if there is not one
+        //make child fromId(you) and it child toId(person you are talking to)
         val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
         val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
         val chatMessage = toId?.let {
+            //get a chatMessage refernce
             ChatMessage(reference.key!!, text, fromId,
                 it, System.currentTimeMillis() / 1000)
         }
 
+        //save chat in the above format in the realtime database
+        //i.e.
+        /*you :-
+             to:-
+               msgId:-
+                    from:
+                    to:
+                    text:
+                    msgId:
+                    timestamps:
+                    */
         reference.setValue(chatMessage)
             .addOnSuccessListener {
-                Log.d(TAG, "Saved our chat message: ${reference.key}")
                 binding.etChatLog.text.clear()
                 binding.rvChatlog.scrollToPosition(adapter.itemCount - 1)
             }
 
+        //do the same in the db of user you are talking to
         toReference.setValue(chatMessage)
 
+
+        //Likewise make a latest message directory where every users latest message with their contact is saved
+        //and do that on both ends
         val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
         latestMessageRef.setValue(chatMessage)
 

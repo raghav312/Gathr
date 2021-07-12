@@ -12,8 +12,14 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.gathr.MainActivity
 import com.example.gathr.R
 
-class NotificationHelper {
+class NotificationHelper{
+
+    //static function so that there is no need for making an instance
     companion object {
+
+        //notif channel helps in getting the notification even when the app is closed
+        //also does not need INTERNET connection
+        // create a system notification channel with these parameters
         fun createNotificationChannel(
             context: Context,
             importance: Int,
@@ -21,6 +27,7 @@ class NotificationHelper {
             name: String,
             description: String
         ) {
+            //Check build version to target device
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                 val channelId = "${context.packageName}-$name"
@@ -32,9 +39,14 @@ class NotificationHelper {
                 notificationManager.createNotificationChannel(channel)
             }
         }
+
+
+        //create notification on these parameters
         fun createNotification(context: Context, title:String){
             val channelId = "${context.packageName}-${context.getString(R.string.app_name)}"
             val notificationBuilder = NotificationCompat.Builder(context,channelId).apply {
+                //we can customise our notification
+                //we can add icon , response button etc.
                 setSmallIcon(R.drawable.common_google_signin_btn_icon_light)
                 setContentTitle(title)
                 priority = NotificationCompat.PRIORITY_HIGH
@@ -50,7 +62,5 @@ class NotificationHelper {
 
         }
     }
-
-
 
 }
